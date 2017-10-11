@@ -1,17 +1,16 @@
 ﻿//
-// -------------- Model -------------- 
+// --------- Model ---------
 //
 
-type Details= {
-    Name:  string
-    Description: string}
+type Details =
+    { Name: string
+      Description: string }
 
-type Item ={
-    Details: Details}
+type Item =
+    { Details: Details }
 
 type RoomId =
     | RoomId of string
-
 
 type Exit =
     | PassableExit of string * destination: RoomId
@@ -24,22 +23,20 @@ type Exits =
       East: Exit
       West: Exit }
 
-type Room ={
-    Id: RoomId
-    Details: Details
-    Items: Item list
-    Exists: Exits}
+type Room =
+    { Id: RoomId
+      Details: Details
+      Items: Item list
+      Exits: Exits }
 
-type Player ={
-    Details: Details
-    Location: RoomId
-    Inventory: Item list
-    }
+type Player =
+    { Details: Details
+      Location: RoomId
+      Inventory: Item list }
 
-type World={
-    Rooms: Map<RoomId, Room>
-    Player: Player
-}
+type World =
+    { Rooms: Map<RoomId, Room> 
+      Player: Player }
 
 // --------- Initial World ---------
 
@@ -121,3 +118,4 @@ let gameWorld =
 //
 // --------- Logic --------- 
 //
+
