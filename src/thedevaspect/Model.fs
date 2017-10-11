@@ -119,3 +119,31 @@ let gameWorld =
 // --------- Logic --------- 
 //
 
+
+let describeDetails details = 
+    printf "\n\n%s\n\n%s\n\n" details.Name details.Description
+
+let getRoom world roomId = 
+    world.Rooms.TryFind roomId
+
+let extractDetailsFromRoom (room: Room option) =
+    match room with
+    | Some(r) -> r.Details
+    | None -> {Name="No room"; Description= "No room for that roomId"}
+
+let describeCurrentRoom world = 
+    world.Player.Location
+    |> getRoom world
+    |> (extractDetailsFromRoom >> describeDetails)
+//    |> extractDetailsFromRoom 
+//    |> describeDetails 
+//    |> (fun room -> 
+//              extractDetailsFromRoom room |> describeDetails )
+  
+            
+gameWorld
+        |> describeCurrentRoom
+        
+printfn "Bye bye"
+
+
